@@ -4,20 +4,25 @@
     <view class="next-prev">
       <view class="arrow prev" bindtap="changeMonth" id="prev"></view>
     </view>
-    <view class="selected-date">{{currYear}}年{{currMonth}}月{{currDay}}日 {{currDayInWeek}}</view>
+    <view class="selected-date">{{currYear}}年{{currMonth}}月</view>
     <view class="next-prev">
        <view class="arrow next" bindtap="changeMonth" id="next"></view>
     </view>
   </view>
   <view class="week-display flex">
       <view wx:for="{{week}}" class="week-cell {{item.class}}">{{item.value}}</view>
-    </view>
-  <view class="date-picker">
-    <view class="flex">
-      <view wx:for="{{emptyGrids}}" class="date-cell"></view>
-      <view wx:for="{{days}}" class="date-cell" bindtap="selectDate" data-selected="{{[currYear, currMonth, item.value]}}">
-        <view class="{{item.class}}{{selected == item.value ? ' selected': ''}}" data-selected="{{[currYear, currMonth, item.value]}}">{{item.value}}</view>
-      </view>
-    </view>
   </view>
+  <swiper class="date-picker  swiper" current="{{current}}" bindchange="swipeMonth">
+    <block wx:for="{{displayDate}}" wx:for-item="date">
+      <swiper-item class="flex" style="heigth: auto">
+        <view wx:for="{{date.emptyGrids}}" class="date-cell"></view>
+        <view wx:for="{{date.days}}" class="date-cell" bindtap="selectDate" data-selected="{{[date.year, date.month, item.value]}}">
+          <view class="{{item.class}}{{selected == item.value ? ' selected': ''}}" data-selected="{{[date.year, date.month, item.value]}}">{{item.value}}</view>
+        </view>
+        <view wx:for="{{42 - date.emptyGrids - date.days.length}}" class="date-cell blank-cell"></view>
+      </swiper-item>
+      
+    </block>
+  </swiper>
+  
 </view>
