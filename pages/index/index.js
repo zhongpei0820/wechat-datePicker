@@ -73,13 +73,10 @@ Page({
   data: {
     currYear: year,
     currMonth: month,
-    currDay: dayInMonth,
-    currDayInWeek: week[dayInWeek].value, 
     week: week,
     emptyGrids: calEmptyGrid(year, month),
     days: calDays(year, month),
     selected: selected,
-    isCurrMonth: true,
   },
   
   changeMonth: function (e){
@@ -106,15 +103,10 @@ Page({
   selectDate: function (e){
     let data = e.target.dataset.selected;
     selected = [data[0], data[1], data[2]];
-    let dayInWeek = calWeekDay(data[0], data[1], data[2]);
     let days = calDays(data[0], data[1]);
-    console.log(week);
-    console.log(dayInWeek);
     this.setData({
       currYear: data[0],
       currMonth: data[1],
-      currDay: data[2],
-      currDayInWeek: week[dayInWeek].value,
       days: days
     })
   }
