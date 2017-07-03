@@ -54,12 +54,6 @@
 .date-picker {
     background-color: #FBFCFC;
     border-bottom: .3rpx solid #E5E7E9;
-    height: 435rpx;
-    width: 100%;
-}
-
-.date-picker swiper-item {
-  height: auto;
 }
 
 .week-display {
@@ -75,10 +69,6 @@
   font-size: 35rpx;
   border-top: .3rpx solid #E5E7E9;
   z-index: 1;
-}
-
-.blank-cell {
-  border-top: 0px; 
 }
 
 .date-bg {
@@ -107,6 +97,3 @@
   color: white;
   background-color: #F44336;
 }
-
-
-
